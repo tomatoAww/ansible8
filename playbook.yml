@@ -1,0 +1,11 @@
+- name: Deploy JAR from Ansible Jenkins 
+  hosts: local 
+  become: true 
+  tasks:
+  - name: Copy JAR from Jenkins workspace 
+    copy:
+     src: /mnt/c/ProgramData/Jenkins/-jenkins/workspace/jenkins6/target/myapp-1.0-SNAPSHOT. jar 
+     dest: /mnt/c/Users/GREESHMA/ansible-deploy/myapp-1.0-SNAPSHOT.jar  
+     mode: 0755
+  - name: Run JAR in Background 
+    shell: nohup java -jar /mnt/c/Users/GREESHMA/ansible-deploy/myapp-1.0-SNAPSHOT. jar &
